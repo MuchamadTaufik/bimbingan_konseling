@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BimbinganSiswaController;
+use App\Http\Controllers\ControllerAdmin\DashboardAdminController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -21,7 +22,13 @@ Route::post('/login',[LoginController::class, 'authenticate'])->middleware('gues
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('/');
-    Route::post('/logout',[LoginController::class, 'logout']);
+    Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
     Route::get('/bimbingan', [BimbinganSiswaController::class, 'index'])->name('bimbingan');
+
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+});
+
+Route::group(['middleware'=>'auth', 'role:admin'], function(){
+    Route::get('/dashboard-admin', [DashboardAdminController::class, 'index'])->name('dashboard-admin');
 });

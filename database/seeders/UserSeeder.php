@@ -24,13 +24,15 @@ class UserSeeder extends Seeder
             [
                 'semester_id' => 1,
                 'name' => 'Fikri Nur Hakim',
+                'nomor_induk' => '17181920',
+                'role' => 'guru',
                 'email' => 'gurubk1@gmail.com',
                 'password' => '123456',
             ],
             [   
-                'semester_id' => 1,
-                'name' => 'Guru BK',
-                'email' => 'guru@gmail.com',
+                'name' => 'Admin Bimbingan',
+                'role' => 'admin',
+                'email' => 'admin@gmail.com',
                 'password' => '123456',
             ],
         ];
@@ -39,6 +41,8 @@ class UserSeeder extends Seeder
             User::insert([
                 'semester_id' => $value['semester_id'] ?? null,
                 'name' => $value['name'] ?? null,
+                'nomor_induk' => $value['nomor_induk'] ?? null,
+                'role' => $value['role'] ?? null,
                 'email' => $value['email'] ?? null,
                 'password' => Hash::make($value['password'] ?? null), // Enkripsi password
                 'created_at' => Carbon::now(),

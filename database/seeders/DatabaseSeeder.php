@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(SemesterSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(KelasSeeder::class);
     }
 }

@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <title>Bimbingan Konseling</title>
+    <title>Dashboard Admin</title>
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
     <div id="wrapper">
         
         <!-- sidebar -->
-        @include('layouts.partials.sidebar')
+        @include('dashboard-admin.layouts.partials.sidebar')
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -44,7 +44,7 @@
             <div id="content">
 
                 <!-- topbar -->
-                @include('layouts.partials.topbar')
+                @include('dashboard-admin.layouts.partials.topbar')
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -54,7 +54,7 @@
 
             </div>
             <!-- End of Main Content -->
-            @include('layouts.partials.footer')
+            @include('dashboard-admin.layouts.partials.footer')
         </div>
         <!-- End of Content Wrapper -->
 

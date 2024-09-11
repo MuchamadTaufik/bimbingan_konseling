@@ -1,26 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ControllerAdmin;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class DashboardAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
         $user = Auth::user();
-        return view('index', compact('user'));
-    }
-
-    public function profile()
-    {
-        $user = Auth::user();
-        return view('profile.index', compact('user'));
+        return view('dashboard-admin.index', compact('user'));
     }
 
     /**

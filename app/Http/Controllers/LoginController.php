@@ -25,7 +25,17 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+
+            $user = Auth::user();
+
+            // Cek role pengguna
+            if ($user->role === 'admin') {
+                toast()->success('Hallo', 'Selamat Datang ' . $user->name);
+                return redirect()->intended('/dashboard-admin')->withInput();
+            } elseif ($user->role === 'guru') {
+                toast()->success('Hallo', 'Selamat Datang ' . $user->name);
+                return redirect()->intended('/')->withInput();
+            }
         }
 
         toast()->error('Login Gagal', 'Harap Cek Kembali Email dan Password');
