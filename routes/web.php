@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BimbinganSiswaController;
 use App\Http\Controllers\ControllerAdmin\DashboardAdminController;
+use App\Http\Controllers\ControllerAdmin\UserController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -29,6 +30,10 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
 });
 
-Route::group(['middleware'=>'auth', 'role:admin'], function(){
+Route::group(['middleware' => ['auth', 'role:admin']], function() {
     Route::get('/dashboard-admin', [DashboardAdminController::class, 'index'])->name('dashboard-admin');
+
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 });

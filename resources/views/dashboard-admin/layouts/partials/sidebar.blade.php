@@ -11,21 +11,21 @@
     
     <!-- Heading -->
     <div class="sidebar-heading mt-3" style="color: white; font-size : 0.8rem;">
-        MENU BK
+        MENU
     </div>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ Route::is('/') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('/') }}">
+    <li class="nav-item {{ Route::is('dashboard-admin') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard-admin') }}">
             <i class="bi bi-house-door-fill"></i>
             <span>Home</span></a>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ Route::is('bimbingan') ? 'active' : '' }}">
-        <a class="nav-link collapsed" href="{{ route('bimbingan') }}">
+    <li class="nav-item {{ Route::is('user') ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="{{ route('user') }}">
             <i class="bi bi-clipboard-data-fill"></i>
-            <span>Bimbingan Siswa</span>
+            <span>Pengguna</span>
         </a>
     </li>
 
@@ -33,7 +33,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#">
             <i class="bi bi-clipboard2-data-fill"></i>
-            <span>Konsultasi Siswa</span>
+            <span>Semester</span>
         </a>
     </li>
 
@@ -41,7 +41,15 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#">
             <i class="bi bi-person-workspace"></i>
-            <span>Kunjungan</span>
+            <span>Kelas</span>
+        </a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+            <i class="bi bi-person-workspace"></i>
+            <span>Siswa</span>
         </a>
     </li>
 
