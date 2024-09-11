@@ -22,11 +22,13 @@ class UserSeeder extends Seeder
 
         $data = [
             [
+                'semester_id' => 1,
                 'name' => 'Fikri Nur Hakim',
                 'email' => 'gurubk1@gmail.com',
                 'password' => '123456',
             ],
-            [
+            [   
+                'semester_id' => 1,
                 'name' => 'Guru BK',
                 'email' => 'guru@gmail.com',
                 'password' => '123456',
@@ -35,6 +37,7 @@ class UserSeeder extends Seeder
         
         foreach ($data as $value) {
             User::insert([
+                'semester_id' => $value['semester_id'] ?? null,
                 'name' => $value['name'] ?? null,
                 'email' => $value['email'] ?? null,
                 'password' => Hash::make($value['password'] ?? null), // Enkripsi password

@@ -11,7 +11,7 @@
             <h6>{{ auth()->user()->name }}</h6>
         </li>
         <li class="identitas-item">
-            <h6>Semester</h6>
+            <h6>{{ auth()->user()->semester ? auth()->user()->semester->name : 'Belum ada Semester' }}</h6>
         </li>
         <li class="identitas-item">
             <h6 id="clock"></h6>

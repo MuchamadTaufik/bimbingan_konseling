@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BimbinganSiswaController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -19,6 +20,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login',[LoginController::class, 'authenticate'])->middleware('guest');
 
 Route::group(['middleware'=>'auth'], function(){
-    Route::get('/',[DashboardController::class, 'index']);
+    Route::get('/',[DashboardController::class, 'index'])->name('/');
     Route::post('/logout',[LoginController::class, 'logout']);
+
+    Route::get('/bimbingan', [BimbinganSiswaController::class, 'index'])->name('bimbingan');
 });

@@ -15,15 +15,15 @@
     </div>
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item {{ Route::is('/') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('/') }}">
             <i class="bi bi-house-door-fill"></i>
             <span>Home</span></a>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+    <li class="nav-item {{ Route::is('bimbingan') ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="{{ route('bimbingan') }}">
             <i class="bi bi-clipboard-data-fill"></i>
             <span>Bimbingan Siswa</span>
         </a>
