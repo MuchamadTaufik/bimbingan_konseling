@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ControllerAdmin\SemesterController;
+use App\Http\Controllers\ControllerAdmin\KelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,4 +48,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function() {
     Route::get('/semester/edit/{semester}', [SemesterController::class, 'edit'])->name('semester.edit');
     Route::put('/semester/update/{semester}', [SemesterController::class, 'update'])->name('semester.update');
     Route::delete('/semester/delete/{semester}', [SemesterController::class, 'destroy'])->name('semester.delete');
+
+    Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
+    Route::get('/kelas/create', [KelasController::class, 'create'])->name('kelas.create');
+    Route::post('/kelas/store', [KelasController::class, 'store'])->name('kelas.store');
+    Route::get('/kelas/edit/{kelas}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::put('/kelas/update/{kelas}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::delete('/kelas/delete/{kelas}', [KelasController::class, 'destroy'])->name('kelas.delete');
 });

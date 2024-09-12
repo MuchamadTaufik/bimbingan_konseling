@@ -44,7 +44,7 @@
         </div>
     </li>
 
-    <li class="nav-item {{ Route::is('semester','semester.create', 'semester.edit') ? 'active' : '' }}">
+    <li class="nav-item {{ Route::is('semester','semester.create', 'semester.edit', 'kelas', 'kelas.create', 'kelas.edit') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="bi bi-clipboard-data-fill"></i>
@@ -54,7 +54,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('semester') }}">Semester</a>
-                <a class="collapse-item" href="/register">Kelas</a>
+                <a class="collapse-item" href="{{ route('kelas') }}">Kelas</a>
             </div>
         </div>
     </li>
