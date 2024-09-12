@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ControllerAdmin\SemesterController;
 use App\Http\Controllers\ControllerAdmin\KelasController;
+use App\Http\Controllers\ControllerAdmin\SiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +62,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function() {
     Route::get('/guru-bk/edit/{users}', [DashboardAdminController::class, 'edit'])->name('guru-bk.edit');
     Route::put('/guru-bk/update/{user}', [DashboardAdminController::class, 'update'])->name('guru-bk.update');
     Route::delete('/guru-bk/delete/{user}', [DashboardAdminController::class, 'destroy'])->name('guru-bk.delete');
+
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa');
+    Route::get('/siswa/create', [SiswaController::class, 'create'])->name('siswa.create');
+    Route::post('/siswa/store', [SiswaController::class, 'store'])->name('siswa.store');
+    Route::get('/siswa/edit/{siswa}', [SiswaController::class, 'edit'])->name('siswa.edit');
+    Route::put('/siswa/update/{siswa}', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::delete('/siswa/delete/{siswa}', [SiswaController::class, 'destroy'])->name('siswa.delete');
 });
