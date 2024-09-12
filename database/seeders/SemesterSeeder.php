@@ -21,28 +21,10 @@ class SemesterSeeder extends Seeder
 
         $data = [
             [
-                'name' => 'Semester Ganjil 2024',
+                'name' => '2023/2024 Semester 1',
             ],
             [
-                'name' => 'Semester Genap 2024',
-            ],
-            [
-                'name' => 'Semester Ganjil 2025',
-            ],
-            [
-                'name' => 'Semester Genap 2025',
-            ],
-            [
-                'name' => 'Semester Ganjil 2026',
-            ],
-            [
-                'name' => 'Semester Genap 2026',
-            ],
-            [
-                'name' => 'Semester Ganjil 2027',
-            ],
-            [
-                'name' => 'Semester Genap 2027',
+                'name' => '2023/2024 Semester 2',
             ],
         ];
         

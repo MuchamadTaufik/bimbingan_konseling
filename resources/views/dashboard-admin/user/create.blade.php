@@ -7,9 +7,6 @@
             <input class="form-control form-control-user" id="name" type="text" name="name" value="{{ old('name') }}" required placeholder="Masukan Nama">
         </div>
         <div class="form-group">
-            <input class="form-control form-control-user" id="nomor_induk" type="number" name="nomor_induk" value="{{ old('nomor_induk') }}" required placeholder="Masukan Nomor induk">
-        </div>
-        <div class="form-group">
             <select class="form-select form-control-user" name="role" required style="width: 100%">
                 <option value="" @if(old('role') === null) selected @endif>-- Pilih Role --</option>
                 <option value="guru" @if(old('role') == 'guru') selected @endif>Guru</option>

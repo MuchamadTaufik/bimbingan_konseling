@@ -68,9 +68,13 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
-    {
-        //
+    public function edit(User $users)
+    {   
+        $user = Auth::user();
+        return view('dashboard-admin.user.edit', [
+            'user' => $user,
+            'users' => $users
+        ]);
     }
 
     /**
@@ -78,7 +82,24 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        try {
+            $rules = [
+                'semester_id' => 'nullable',
+                'name' => 'required|max:50',
+                'nomor_induk' => 'nullable|max:50',
+                'role' => 'required|in:guru,admin',
+                'email' => 'required|email',
+            ];
+
+            $validateData = $request->validate($rules);
+
+            $user->update($validateData);
+
+            alert()->success('Berhasil', 'Data Pengguna Berhasil diubah');
+            return redirect('/user')->withInput();
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
     }
 
     /**
@@ -86,6 +107,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+
+        // Menampilkan notifikasi sukses dan redirect
+        alert()->success('Success', 'Akun berhasil dihapus');
+        return redirect('/user')->withInput();
     }
 }

@@ -22,35 +22,41 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ Route::is('user') ? 'active' : '' }}">
+    <li class="nav-item {{ Route::is('user','user.create','user.edit') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="{{ route('user') }}">
+            <i class="bi bi-people"></i>
+            <span>Akun Pengguna</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount"
+            aria-expanded="true" aria-controls="collapseAccount">
+            <i class="bi bi-person-badge"></i>
+            <span>Warga Sekolah</span>
+        </a>
+        <div id="collapseAccount" class="collapse" aria-labelledby="headingAccount"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="/users">Guru BK</a>
+                <a class="collapse-item" href="/register">Siswa</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item {{ Route::is('semester','semester.create', 'semester.edit') ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
             <i class="bi bi-clipboard-data-fill"></i>
-            <span>Pengguna</span>
+            <span>Data</span>
         </a>
-    </li>
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-            <i class="bi bi-clipboard2-data-fill"></i>
-            <span>Semester</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-            <i class="bi bi-person-workspace"></i>
-            <span>Kelas</span>
-        </a>
-    </li>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-            <i class="bi bi-person-workspace"></i>
-            <span>Siswa</span>
-        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('semester') }}">Semester</a>
+                <a class="collapse-item" href="/register">Kelas</a>
+            </div>
+        </div>
     </li>
 
     <hr class="sidebar-divider d-none d-md-block">
