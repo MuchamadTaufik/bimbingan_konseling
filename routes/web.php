@@ -23,9 +23,10 @@ use App\Http\Controllers\ControllerAdmin\KelasController;
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class, 'authenticate'])->middleware('guest');
 
-Route::group(['middleware'=>'auth'], function(){
+Route::post('/logout',[LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::group(['middleware'=> ['auth', 'role:guru']], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('/');
-    Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
     Route::get('/bimbingan', [BimbinganSiswaController::class, 'index'])->name('bimbingan');
 
@@ -55,4 +56,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function() {
     Route::get('/kelas/edit/{kelas}', [KelasController::class, 'edit'])->name('kelas.edit');
     Route::put('/kelas/update/{kelas}', [KelasController::class, 'update'])->name('kelas.update');
     Route::delete('/kelas/delete/{kelas}', [KelasController::class, 'destroy'])->name('kelas.delete');
+
+    Route::get('/guru-bk', [DashboardAdminController::class, 'guru'])->name('guru_bk');
+    Route::get('/guru-bk/edit/{users}', [DashboardAdminController::class, 'edit'])->name('guru-bk.edit');
+    Route::put('/guru-bk/update/{user}', [DashboardAdminController::class, 'update'])->name('guru-bk.update');
+    Route::delete('/guru-bk/delete/{user}', [DashboardAdminController::class, 'destroy'])->name('guru-bk.delete');
 });

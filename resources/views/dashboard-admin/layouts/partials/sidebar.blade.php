@@ -29,7 +29,7 @@
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ Route::is('guru_bk', 'guru-bk.edit') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccount"
             aria-expanded="true" aria-controls="collapseAccount">
             <i class="bi bi-person-badge"></i>
@@ -38,7 +38,7 @@
         <div id="collapseAccount" class="collapse" aria-labelledby="headingAccount"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/users">Guru BK</a>
+                <a class="collapse-item" href="{{ route('guru_bk') }}">Guru BK</a>
                 <a class="collapse-item" href="/register">Siswa</a>
             </div>
         </div>
