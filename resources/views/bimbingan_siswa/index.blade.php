@@ -31,16 +31,18 @@
                     </thead>
                 
                     <tbody>
+                        @foreach ($siswas as $siswa)    
                         <tr>
-                            <td>1</td>
-                            <td>1 Juli 2024</td>
-                            <td>203040142</td>
-                            <td>Muchamad Taufik Mulyadi</td>
-                            <td>12 MIPA 1</td>
+                            <td>{{ $loop->iteration }}.</td>
+                            <td>{{ $siswa->name }}</td>
+                            <td>{{ $siswa->nomor_induk }}</td>
+                            <td>{{ $siswa->kelas->name }}</td>
+                            <td>{{ $siswa->semester->name }}</td>
                             <td>
                                 <a href="" class="btn btn-success" style="text-decoration: none;">Pilih Siswa dan Lanjutkan</a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

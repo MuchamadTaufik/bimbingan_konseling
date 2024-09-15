@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BimbinganSiswa;
 use App\Http\Requests\StoreBimbinganSiswaRequest;
 use App\Http\Requests\UpdateBimbinganSiswaRequest;
+use App\Models\Siswa;
 use Illuminate\Support\Facades\Auth;
 
 class BimbinganSiswaController extends Controller
@@ -14,8 +15,9 @@ class BimbinganSiswaController extends Controller
      */
     public function index()
     {   
+        $siswas = Siswa::all();
         $user = Auth::user();
-        return view('bimbingan_siswa.index', compact('user'));
+        return view('bimbingan_siswa.index', compact('user','siswas'));
     }
 
     /**
