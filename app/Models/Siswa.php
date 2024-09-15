@@ -21,7 +21,7 @@ class Siswa extends Model
         return $this->belongsTo(kelas::class);
     }
 
-    public function Bimbingan()
+    public function bimbinganSiswa()
     {
         return $this->hasMany(BimbinganSiswa::class);
     }

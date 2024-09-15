@@ -30,6 +30,10 @@ Route::group(['middleware'=> ['auth', 'role:guru']], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('/');
 
     Route::get('/bimbingan', [BimbinganSiswaController::class, 'index'])->name('bimbingan');
+    Route::get('/bimbingan/{siswa}', [BimbinganSiswaController::class, 'create'])->name('bimbingan.create');
+    Route::post('/bimbingan/siswa', [BimbinganSiswaController::class, 'store'])->name('bimbingan.store');
+    Route::get('/bimbingan/download/{bimbinganSiswa}', [BimbinganSiswaController::class, 'download'])->name('bimbingan.download');
+    Route::get('/bimbingan/rekap-bimbingan/{siswa}', [BimbinganSiswaController::class, 'rekap'])->name('bimbingan.rekap');
 
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
 });

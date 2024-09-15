@@ -27,6 +27,7 @@
                             <th>Kelas</th>
                             <th>Semester</th>
                             <th>Aksi</th>
+                            <th>Rekap Bimbingan</th>
                         </tr>
                     </thead>
                 
@@ -38,9 +39,8 @@
                             <td>{{ $siswa->nomor_induk }}</td>
                             <td>{{ $siswa->kelas->name }}</td>
                             <td>{{ $siswa->semester->name }}</td>
-                            <td>
-                                <a href="" class="btn btn-success" style="text-decoration: none;">Pilih Siswa dan Lanjutkan</a>
-                            </td>
+                            <td><a href="{{ route('bimbingan.create', $siswa->id) }}" class="btn btn-success" style="text-decoration: none;">Pilih Siswa dan Lanjutkan</a></td>
+                            <td><a href="{{ route('bimbingan.rekap', $siswa->id) }}" class="btn btn-primary" style="text-decoration: none;">Rekap Bimbingan</a></td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('topik');
             $table->string('tujuan');
             $table->string('pemateri');
+            $table->string('tempat_select');
             $table->string('tempat');
             $table->timestamps();
         });
