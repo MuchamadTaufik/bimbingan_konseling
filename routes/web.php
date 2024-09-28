@@ -10,6 +10,7 @@ use App\Http\Controllers\ControllerAdmin\KelasController;
 use App\Http\Controllers\ControllerAdmin\SiswaController;
 use App\Http\Controllers\ControllerAdmin\SemesterController;
 use App\Http\Controllers\ControllerAdmin\DashboardAdminController;
+use App\Http\Controllers\KunjunganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,9 +45,19 @@ Route::group(['middleware'=> ['auth', 'role:guru']], function(){
     Route::get('/konsultasi/download/{kegiatan}', [KegiatanController::class, 'downloadKonsultasi'])->name('konsultasi.download');
     Route::get('/konsultasi/edit/{kegiatan}', [KegiatanController::class, 'editKonsultasi'])->name('konsultasi.edit');
 
+    //tambah,edit,hapus Kegiatan
     Route::post('/kegiatan/siswa', [KegiatanController::class, 'store'])->name('kegiatan.store');
     Route::put('/kegiatan/siswa/{kegiatan}', [KegiatanController::class, 'update'])->name('kegiatan.update');
     Route::delete('/kegiatan/siswa/{kegiatan}', [KegiatanController::class, 'destroy'])->name('kegiatan.hapus');
+
+    //kunjungan
+    Route::get('/kunjungan', [KunjunganController::class, 'index'])->name('kunjungan');
+    Route::get('/kunjungan/create', [KunjunganController::class, 'create'])->name('kunjungan.create');
+    Route::post('/kunjungan/siswa', [KunjunganController::class, 'store'])->name('kunjungan.store');
+    Route::get('/kunjungan/download/{kunjungan}', [KunjunganController::class, 'downloadKunjungan'])->name('kunjungan.download');
+    Route::get('/kunjungan/edit/{kunjungan}', [KunjunganController::class, 'edit'])->name('kunjungan.edit');
+    Route::put('/kunjungan/edit/{kunjungan}', [KunjunganController::class, 'update'])->name('kunjungan.update');
+    Route::delete('/kunjungan/delete/{kunjungan}', [KunjunganController::class, 'destroy'])->name('kunjungan.delete');
 
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
 });
