@@ -37,6 +37,7 @@ class BimbinganSiswaController extends Controller
     {
         $validateData = $request->validate([
             'siswa_id' => 'required|exists:siswas,id',
+            'semester' => 'required',
             'tanggal' => 'required|date',
             'waktu' => 'required|date_format:H:i',
             'topik' => 'required',

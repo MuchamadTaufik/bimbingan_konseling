@@ -32,7 +32,7 @@
         <table width="300">
             <center>
                 <font size="4">LAPORAN PELAKSANAAN LAYANAN BIMBINGAN</font> <br>
-                <font size="3">TAHUN PELAJARAN {{ $bimbinganSiswa->siswa->semester->name }}</font>
+                <font size="3">TAHUN PELAJARAN {{ $bimbinganSiswa->semester }}</font>
             </center>
             <hr style="width: 100%; margin-top: 20px; margin-bottom: 20px;">
         </table>

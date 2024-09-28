@@ -9,6 +9,11 @@
             <input type="hidden" name="siswa_id" value="{{ $siswa->id }}">
         </div>
         <div class="form-group">
+            <label for="semester">Semester</label>
+            <input class="form-control form-control-user" id="semester" type="text" name="semester" value="{{ old('semester', $siswa->semester->name) }}" readonly>
+            <input type="hidden" name="semester" value="{{ $siswa->semester->name }}">
+        </div>
+        <div class="form-group">
             <label for="tanggal">Tanggal Bimbingan</label>
             <input class="form-control form-control-user" id="tanggal" type="date" name="tanggal" value="{{ old('tanggal', $bimbinganSiswa->tanggal) }}" required>
         </div>

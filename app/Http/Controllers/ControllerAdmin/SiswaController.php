@@ -83,7 +83,7 @@ class SiswaController extends Controller
         try {
             $rules = [
                 'name' => 'required|max:50',
-                'nomor_induk' => 'required|unique:siswas',
+                'nomor_induk' => 'required',
                 'semester_id' => 'required',
                 'kelas_id' => 'required'
             ];

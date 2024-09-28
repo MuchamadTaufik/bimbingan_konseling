@@ -13,6 +13,7 @@
                         <tr class="bg-gradient-dark sidebar sidebar-dark accordion text-white" id="accordionSidebar">
                             <th>No</th>
                             <th>Tanggal Bimbingan</th>
+                            <th>Semester</th>
                             <th>Topik</th>
                             <th>Tujuan</th>
                             <th>Pemateri</th>
@@ -26,6 +27,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}.</td>
                             <td>{{ $bimbinganSiswas->tanggal }}, Pukul : {{ $bimbinganSiswas->waktu }}</td>
+                            <td>{{ $bimbinganSiswas->semester}}</td>
                             <td>{{ $bimbinganSiswas->topik }}</td>
                             <td>{{ $bimbinganSiswas->tujuan }}</td>
                             <td>{{ $bimbinganSiswas->pemateri }}</td>

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bimbingan_siswas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('siswa_id')->constrained()->onDelete('cascade');
+            $table->string('semester');
             $table->date('tanggal');
             $table->time('waktu');
             $table->string('topik');
