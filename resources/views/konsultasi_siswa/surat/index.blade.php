@@ -69,11 +69,6 @@
                 <td>{{ $kegiatan->tujuan }}</td>
             </tr>
             <tr>
-                <td>Pemateri</td>
-                <td>:</td>
-                <td>{{ $kegiatan->pemateri }}</td>
-            </tr>
-            <tr>
                 <td>Rencana Tindak Lanjut</td>
                 <td>:</td>
                 <td>{{ $kegiatan->rencana_tindak_lanjut }}</td>

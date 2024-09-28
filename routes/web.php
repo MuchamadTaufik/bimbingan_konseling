@@ -30,12 +30,23 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout')->middl
 Route::group(['middleware'=> ['auth', 'role:guru']], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('/');
 
+    //Bimbingan Siswa
     Route::get('/bimbingan', [KegiatanController::class, 'indexBimbingan'])->name('bimbingan');
     Route::get('/bimbingan/{siswa}', [KegiatanController::class, 'createBimbingan'])->name('bimbingan.create');
-    Route::get('/bimbingan/download/{bimbinganSiswa}', [KegiatanController::class, 'downloadBimbingan'])->name('bimbingan.download');
+    Route::get('/bimbingan/download/{kegiatan}', [KegiatanController::class, 'downloadBimbingan'])->name('bimbingan.download');
     Route::get('/bimbingan/rekap-bimbingan/{siswa}', [KegiatanController::class, 'rekapBimbingan'])->name('bimbingan.rekap');
+    Route::get('/bimbingan/edit/{kegiatan}', [KegiatanController::class, 'editBimbingan'])->name('bimbingan.edit');
+
+    //Konsultasi Siswa
+    Route::get('/konsultasi', [KegiatanController::class, 'indexKonsultasi'])->name('konsultasi');
+    Route::get('/konsultasi/{siswa}', [KegiatanController::class, 'createKonsultasi'])->name('konsultasi.create');
+    Route::get('/konsultasi/rekap-konsultasi/{siswa}', [KegiatanController::class, 'rekapKonsultasi'])->name('konsultasi.rekap');
+    Route::get('/konsultasi/download/{kegiatan}', [KegiatanController::class, 'downloadKonsultasi'])->name('konsultasi.download');
+    Route::get('/konsultasi/edit/{kegiatan}', [KegiatanController::class, 'editKonsultasi'])->name('konsultasi.edit');
 
     Route::post('/kegiatan/siswa', [KegiatanController::class, 'store'])->name('kegiatan.store');
+    Route::put('/kegiatan/siswa/{kegiatan}', [KegiatanController::class, 'update'])->name('kegiatan.update');
+    Route::delete('/kegiatan/siswa/{kegiatan}', [KegiatanController::class, 'destroy'])->name('kegiatan.hapus');
 
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
 });

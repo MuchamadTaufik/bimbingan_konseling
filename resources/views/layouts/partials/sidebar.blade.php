@@ -31,7 +31,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item {{ Route::is('konsultasi*') ? 'active' : '' }}">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{ route('konsultasi') }}">
             <i class="bi bi-clipboard2-data-fill"></i>
             <span>Konsultasi Siswa</span>
         </a>

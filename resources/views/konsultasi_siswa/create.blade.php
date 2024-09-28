@@ -22,24 +22,20 @@
             <input type="hidden" name="semester" value="{{ $siswa->semester->name }}">
         </div>
         <div class="form-group">
-            <label for="tanggal">Tanggal Bimbingan</label>
+            <label for="tanggal">Tanggal Konsultasi</label>
             <input class="form-control form-control-user" id="tanggal" type="date" name="tanggal" value="{{ old('tanggal', $kegiatan->tanggal) }}" required>
         </div>
         <div class="form-group">
-            <label for="waktu">Waktu Bimbingan</label>
+            <label for="waktu">Waktu Konsultasi</label>
             <input class="form-control form-control-user" id="waktu" type="time" name="waktu" value="{{ old('waktu', $kegiatan->waktu) }}" required>
         </div>
         <div class="form-group">
-            <label for="topik">Topik Bimbingan</label>
+            <label for="topik">Topik Konsultasi</label>
             <input class="form-control form-control-user" id="topik" type="text" name="topik" value="{{ old('topik', $kegiatan->topik) }}" required>
         </div>
         <div class="form-group">
-            <label for="tujuan">Tujuan Bimbingan</label>
+            <label for="tujuan">Tujuan Konsultasi</label>
             <input class="form-control form-control-user" id="tujuan" type="text" name="tujuan" value="{{ old('tujuan', $kegiatan->tujuan) }}" required>
-        </div>
-        <div class="form-group">
-            <label for="pemateri">Pemateri</label>
-            <input class="form-control form-control-user" id="pemateri" type="text" name="pemateri" value="{{ old('pemateri', $kegiatan->pemateri) }}" required>
         </div>
         <div class="form-group">
             <label for="rencana_tindak_lanjut">Rencana Tidak Lanjut</label>
@@ -47,7 +43,7 @@
         </div>
         <div class="form-group">
             <label for="tempat_select">Pilih Tempat</label>
-            <select class="form-control" id="tempat_select" name="tempat_select" required>
+            <select class="form-control" id="tempat_select" name="tempat_select">
                 <option value="">Pilih</option>
                 <option value="onsite">Onsite</option>
                 <option value="online">Online</option>

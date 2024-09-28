@@ -4,7 +4,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-dark">Daftar Bimbingan {{ $siswa->name }}</h6>
+            <h6 class="m-0 font-weight-bold text-dark">Daftar Konsultasi {{ $siswa->name }}</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -12,11 +12,10 @@
                     <thead>
                         <tr class="bg-gradient-dark sidebar sidebar-dark accordion text-white" id="accordionSidebar">
                             <th>No</th>
-                            <th>Tanggal Bimbingan</th>
+                            <th>Tanggal Konsultasi</th>
                             <th>Kelas & Semester</th>
                             <th>Topik</th>
                             <th>Tujuan</th>
-                            <th>Pemateri</th>
                             <th>Tempat</th>
                             <th>Aksi</th>
                         </tr>
@@ -26,29 +25,25 @@
                         @php
                             $counter = 1;
                         @endphp
-                        @foreach ($kegiatan as $bimbinganSiswas)
-                            @if ($bimbinganSiswas->jenis_kegiatans_id === 1)
+                        @foreach ($kegiatan as $konsultasiSiswas)
+                            @if ($konsultasiSiswas->jenis_kegiatans_id === 2)
                                 <tr>
                                     <td>{{ $counter }}.</td>
-                                    <td>{{ $bimbinganSiswas->tanggal }}, Pukul : {{ $bimbinganSiswas->waktu }}</td>
-                                    <td>{{ $bimbinganSiswas->kelas }}, {{ $bimbinganSiswas->semester}}</td>
-                                    <td>{{ $bimbinganSiswas->topik }}</td>
-                                    <td>{{ $bimbinganSiswas->tujuan }}</td>
-                                    <td>{{ $bimbinganSiswas->pemateri }}</td>
-                                    <td>{{ $bimbinganSiswas->tempat_select }} ({{ $bimbinganSiswas->tempat }})</td>
+                                    <td>{{ $konsultasiSiswas->tanggal }}, Pukul : {{ $konsultasiSiswas->waktu }}</td>
+                                    <td>{{ $konsultasiSiswas->kelas }}, {{ $konsultasiSiswas->semester}}</td>
+                                    <td>{{ $konsultasiSiswas->topik }}</td>
+                                    <td>{{ $konsultasiSiswas->tujuan }}</td>
+                                    <td>{{ $konsultasiSiswas->tempat_select }} ({{ $konsultasiSiswas->tempat }})</td>
                                     <td>
-                                        <a href="{{ route('bimbingan.download', $bimbinganSiswas->id) }}" class="badge bg-success border-0">Download Surat</a>
-                                        <a href="{{ route('bimbingan.edit', $bimbinganSiswas->id) }}" class="badge bg-warning border-0"><i class="bi bi-pencil-square"></i></a>
-                                        <form action="{{ route('kegiatan.hapus',$bimbinganSiswas->id) }}" method="post" class="d-inline">
+                                        <a href="{{ route('konsultasi.download', $konsultasiSiswas->id) }}" class="badge bg-success border-0">Download Surat</a>
+                                        <a href="{{ route('konsultasi.edit', $konsultasiSiswas->id) }}" class="badge bg-warning border-0"><i class="bi bi-pencil-square"></i></a>
+                                        <form action="{{ route('kegiatan.hapus', $konsultasiSiswas->id) }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3-fill"></i></button>
                                         </form>
                                     </td>
                                 </tr>
-                                @php
-                                    $counter++;
-                                @endphp
                             @endif
                         @endforeach
                     </tbody>
