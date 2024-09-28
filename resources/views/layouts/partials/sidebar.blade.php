@@ -22,7 +22,7 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ Route::is('bimbingan') ? 'active' : '' }}">
+    <li class="nav-item {{ Route::is('bimbingan*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="{{ route('bimbingan') }}">
             <i class="bi bi-clipboard-data-fill"></i>
             <span>Bimbingan Siswa</span>
@@ -30,8 +30,8 @@
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+    <li class="nav-item {{ Route::is('konsultasi*') ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="">
             <i class="bi bi-clipboard2-data-fill"></i>
             <span>Konsultasi Siswa</span>
         </a>

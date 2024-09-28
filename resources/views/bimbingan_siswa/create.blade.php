@@ -1,12 +1,20 @@
 @extends('layouts.main')
 
 @section('container')
-    <form class="user" method="POST" action="{{ route('bimbingan.store') }}">
+    <form class="user" method="POST" action="{{ route('kegiatan.store') }}">
         @csrf
+        <div class="form-group">
+            <input type="hidden" name="jenis_kegiatans_id" value="{{ $jenisKegiatan->id }}">
+        </div>        
         <div class="form-group">
             <label for="siswa_id">Nama Siswa</label>
             <input class="form-control form-control-user" id="siswa_id" type="text" name="siswa_id" value="{{ old('siswa_id', $siswa->name) }}" readonly>
             <input type="hidden" name="siswa_id" value="{{ $siswa->id }}">
+        </div>
+        <div class="form-group">
+            <label for="kelas">Kelas</label>
+            <input class="form-control form-control-user" id="kelas" type="text" name="kelas" value="{{ old('kelas', $siswa->kelas->name) }}" readonly>
+            <input type="hidden" name="kelas" value="{{ $siswa->kelas->name }}">
         </div>
         <div class="form-group">
             <label for="semester">Semester</label>
@@ -32,6 +40,10 @@
         <div class="form-group">
             <label for="pemateri">Pemateri</label>
             <input class="form-control form-control-user" id="pemateri" type="text" name="pemateri" value="{{ old('pemateri', $bimbinganSiswa->pemateri) }}" required>
+        </div>
+        <div class="form-group">
+            <label for="rencana_tindak_lanjut">Rencana Tidak Lanjut</label>
+            <input class="form-control form-control-user" id="rencana_tindak_lanjut" type="text" name="rencana_tindak_lanjut" value="{{ old('rencana_tindak_lanjut', $bimbinganSiswa->rencana_tindak_lanjut) }}" required>
         </div>
         <div class="form-group">
             <label for="tempat_select">Pilih Tempat</label>

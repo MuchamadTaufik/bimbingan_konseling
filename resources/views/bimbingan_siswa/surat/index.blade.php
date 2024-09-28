@@ -31,7 +31,7 @@
     <div id="halaman">
         <table width="300">
             <center>
-                <font size="4">LAPORAN PELAKSANAAN LAYANAN BIMBINGAN</font> <br>
+                <font size="4">LAPORAN PELAKSANAAN LAYANAN {{ $bimbinganSiswa->jenis_kegiatans->name }}</font> <br>
                 <font size="3">TAHUN PELAJARAN {{ $bimbinganSiswa->semester }}</font>
             </center>
             <hr style="width: 100%; margin-top: 20px; margin-bottom: 20px;">
@@ -42,6 +42,11 @@
                 <td>Nama Siswa</td>
                 <td>:</td>
                 <td>{{ $bimbinganSiswa->siswa->name }}</td>
+            </tr>
+            <tr>
+                <td>Kelas</td>
+                <td>:</td>
+                <td>{{ $bimbinganSiswa->siswa->kelas->name }}</td>
             </tr>
             <tr>
                 <td>Tanggal Bimbingan</td>
@@ -67,6 +72,11 @@
                 <td>Pemateri</td>
                 <td>:</td>
                 <td>{{ $bimbinganSiswa->pemateri }}</td>
+            </tr>
+            <tr>
+                <td>Rencana Tindak Lanjut</td>
+                <td>:</td>
+                <td>{{ $bimbinganSiswa->rencana_tindak_lanjut }}</td>
             </tr>
             <tr>
                 <td>Tempat</td>

@@ -13,7 +13,7 @@
                         <tr class="bg-gradient-dark sidebar sidebar-dark accordion text-white" id="accordionSidebar">
                             <th>No</th>
                             <th>Tanggal Bimbingan</th>
-                            <th>Semester</th>
+                            <th>Kelas & Semester</th>
                             <th>Topik</th>
                             <th>Tujuan</th>
                             <th>Pemateri</th>
@@ -27,11 +27,11 @@
                         <tr>
                             <td>{{ $loop->iteration }}.</td>
                             <td>{{ $bimbinganSiswas->tanggal }}, Pukul : {{ $bimbinganSiswas->waktu }}</td>
-                            <td>{{ $bimbinganSiswas->semester}}</td>
+                            <td>{{ $bimbinganSiswas->kelas }}, {{ $bimbinganSiswas->semester}}</td>
                             <td>{{ $bimbinganSiswas->topik }}</td>
                             <td>{{ $bimbinganSiswas->tujuan }}</td>
                             <td>{{ $bimbinganSiswas->pemateri }}</td>
-                            <td>{{ $bimbinganSiswas->tempat_select }} {{ $bimbinganSiswas->tempat }}</td>
+                            <td>{{ $bimbinganSiswas->tempat_select }} ({{ $bimbinganSiswas->tempat }})</td>
                             <td>
                                 <a href="{{ route('bimbingan.download', $bimbinganSiswas->id) }}" class="badge bg-success border-0">Download Surat</a>
                                 <a href="" class="badge bg-warning border-0"><i class="bi bi-pencil-square"></i></a>

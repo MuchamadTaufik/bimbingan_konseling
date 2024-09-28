@@ -23,7 +23,7 @@ class Siswa extends Model
 
     public function bimbinganSiswa()
     {
-        return $this->hasMany(BimbinganSiswa::class);
+        return $this->hasMany(Kegiatan::class);
     }
     
 }

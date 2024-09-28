@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\BimbinganSiswa;
+use App\Models\Kegiatan;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class BimbinganSiswaPolicy
+class KegiatanPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class BimbinganSiswaPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, BimbinganSiswa $bimbinganSiswa): bool
+    public function view(User $user, Kegiatan $kegiatan): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class BimbinganSiswaPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, BimbinganSiswa $bimbinganSiswa): bool
+    public function update(User $user, Kegiatan $kegiatan): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class BimbinganSiswaPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, BimbinganSiswa $bimbinganSiswa): bool
+    public function delete(User $user, Kegiatan $kegiatan): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class BimbinganSiswaPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, BimbinganSiswa $bimbinganSiswa): bool
+    public function restore(User $user, Kegiatan $kegiatan): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class BimbinganSiswaPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, BimbinganSiswa $bimbinganSiswa): bool
+    public function forceDelete(User $user, Kegiatan $kegiatan): bool
     {
         //
     }

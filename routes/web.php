@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\BimbinganSiswaController;
-use App\Http\Controllers\ControllerAdmin\DashboardAdminController;
-use App\Http\Controllers\ControllerAdmin\UserController;
-use App\Http\Controllers\DashboardController;
+use App\Models\Kegiatan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ControllerAdmin\SemesterController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ControllerAdmin\UserController;
 use App\Http\Controllers\ControllerAdmin\KelasController;
 use App\Http\Controllers\ControllerAdmin\SiswaController;
+use App\Http\Controllers\ControllerAdmin\SemesterController;
+use App\Http\Controllers\ControllerAdmin\DashboardAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +30,12 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout')->middl
 Route::group(['middleware'=> ['auth', 'role:guru']], function(){
     Route::get('/',[DashboardController::class, 'index'])->name('/');
 
-    Route::get('/bimbingan', [BimbinganSiswaController::class, 'index'])->name('bimbingan');
-    Route::get('/bimbingan/{siswa}', [BimbinganSiswaController::class, 'create'])->name('bimbingan.create');
-    Route::post('/bimbingan/siswa', [BimbinganSiswaController::class, 'store'])->name('bimbingan.store');
-    Route::get('/bimbingan/download/{bimbinganSiswa}', [BimbinganSiswaController::class, 'download'])->name('bimbingan.download');
-    Route::get('/bimbingan/rekap-bimbingan/{siswa}', [BimbinganSiswaController::class, 'rekap'])->name('bimbingan.rekap');
+    Route::get('/bimbingan', [KegiatanController::class, 'indexBimbingan'])->name('bimbingan');
+    Route::get('/bimbingan/{siswa}', [KegiatanController::class, 'createBimbingan'])->name('bimbingan.create');
+    Route::get('/bimbingan/download/{bimbinganSiswa}', [KegiatanController::class, 'downloadBimbingan'])->name('bimbingan.download');
+    Route::get('/bimbingan/rekap-bimbingan/{siswa}', [KegiatanController::class, 'rekapBimbingan'])->name('bimbingan.rekap');
+
+    Route::post('/kegiatan/siswa', [KegiatanController::class, 'store'])->name('kegiatan.store');
 
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
 });

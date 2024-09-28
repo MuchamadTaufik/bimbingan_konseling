@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Models\Kegiatan;
 use Barryvdh\DomPDF\PDF;
 use App\Models\BimbinganSiswa;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\StoreBimbinganSiswaRequest;
-use App\Http\Requests\UpdateBimbinganSiswaRequest;
+use App\Http\Requests\StoreKegiatanRequest;
+use App\Http\Requests\UpdateKegiatanRequest;
+use App\Models\JenisKegiatan;
 
-class BimbinganSiswaController extends Controller
+class KegiatanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {   
+    public function indexBimbingan()
+    {
         $siswas = Siswa::with('bimbinganSiswa')->get();
         $user = Auth::user();
         return view('bimbingan_siswa.index', compact('user','siswas'));
@@ -24,37 +26,41 @@ class BimbinganSiswaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Siswa $siswa, BimbinganSiswa $bimbinganSiswa)
+    public function createBimbingan(Siswa $siswa, Kegiatan $bimbinganSiswa)
     {   
+        $jenisKegiatan = JenisKegiatan::find(1);
         $user = Auth::user();
-        return view('bimbingan_siswa.create', compact('user', 'bimbinganSiswa','siswa'));
+        return view('bimbingan_siswa.create', compact('user', 'bimbinganSiswa','siswa', 'jenisKegiatan'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBimbinganSiswaRequest $request)
+    public function store(StoreKegiatanRequest $request)
     {
         $validateData = $request->validate([
+            'jenis_kegiatans_id' => 'required|exists:jenis_kegiatans,id',
             'siswa_id' => 'required|exists:siswas,id',
+            'kelas' => 'required',
             'semester' => 'required',
             'tanggal' => 'required|date',
             'waktu' => 'required|date_format:H:i',
-            'topik' => 'required',
-            'tujuan' => 'required',
-            'pemateri' => 'required',
+            'topik' => 'required|max:255',
+            'tujuan' => 'required|max:255',
+            'pemateri' => 'nullable|max:255',
+            'rencana_tindak_lanjut' => 'required|max:255',
             'tempat_select' => 'required|in:onsite,online',
             'tempat' => 'required'
             
         ]);
 
-        BimbinganSiswa::create($validateData);
+        Kegiatan::create($validateData);
 
         toast()->success('Berhasil', 'Data Bimbingan Berhasil ditambahkan');
         return redirect('/bimbingan')->withInput();
     }
 
-    public function download(BimbinganSiswa $bimbinganSiswa)
+    public function downloadBimbingan(Kegiatan $bimbinganSiswa)
     {
         // Logika untuk membuat dan mengunduh laporan (misalnya PDF)
         $pdf = app(PDF::class);
@@ -63,7 +69,8 @@ class BimbinganSiswaController extends Controller
         return $pdf->download('laporan_bimbingan_siswa_'.$bimbinganSiswa->id.'.pdf');
     }
 
-    public function rekap(Siswa $siswa)
+
+    public function rekapBimbingan(Siswa $siswa)
     {   
         $user = Auth::user();
         $bimbinganSiswa = $siswa->bimbinganSiswa;
@@ -76,7 +83,7 @@ class BimbinganSiswaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BimbinganSiswa $bimbinganSiswa)
+    public function show(Kegiatan $kegiatan)
     {
         //
     }
@@ -84,7 +91,7 @@ class BimbinganSiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BimbinganSiswa $bimbinganSiswa)
+    public function edit(Kegiatan $kegiatan)
     {
         //
     }
@@ -92,7 +99,7 @@ class BimbinganSiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBimbinganSiswaRequest $request, BimbinganSiswa $bimbinganSiswa)
+    public function update(UpdateKegiatanRequest $request, Kegiatan $kegiatan)
     {
         //
     }
@@ -100,7 +107,7 @@ class BimbinganSiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BimbinganSiswa $bimbinganSiswa)
+    public function destroy(Kegiatan $kegiatan)
     {
         //
     }
