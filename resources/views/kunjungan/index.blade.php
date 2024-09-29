@@ -5,19 +5,10 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-dark">Kunjungan Siswa</h6>
-            <div class="dropdown no-arrow">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                    aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Pilih Tahun :</div>
-                </div>
-            </div>
         </div>
         <div class="card-body">
-            <a href="{{ route('kunjungan.create') }}" class="btn btn-primary float-left mb-4">Tambah</a>
+            <a href="{{ route('kunjungan.create') }}" class="btn btn-success float-left mb-4">Tambah</a>
+            <a href="{{ route('laporan.rekapitulasi.kunjungan')}}" class="btn btn-primary float-right mb-4">Download Laporan</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                     <thead>

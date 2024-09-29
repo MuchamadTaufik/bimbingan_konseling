@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\ControllerAdmin;
 
+use App\Charts\AtributChart;
 use App\Models\User;
+use App\Models\Kegiatan;
 use App\Models\Semester;
+use App\Models\Kunjungan;
 use Illuminate\Http\Request;
+use App\Charts\KegiatanChart;
+use App\Charts\WargaSekolahChart;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,10 +18,26 @@ class DashboardAdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(KegiatanChart $kegiatanChart, WargaSekolahChart $wargaSekolahChart, AtributChart $atributChart)
     {   
         $user = Auth::user();
-        return view('dashboard-admin.index', compact('user'));
+        // Menghitung total kegiatan bimbingan
+        $totalBimbingan = Kegiatan::where('jenis_kegiatans_id', 1)->count();
+
+        // Menghitung total kegiatan konsultasi
+        $totalKonsultasi = Kegiatan::where('jenis_kegiatans_id', 2)->count();
+
+        $totalKunjungan = Kunjungan::count();
+        
+        return view('dashboard-admin.index', [
+            'kegiatanChart' => $kegiatanChart->build(),
+            'wargaSekolahChart' => $wargaSekolahChart->build(),
+            'atributChart' => $atributChart->build(),
+            'totalBimbingan' => $totalBimbingan,
+            'totalKonsultasi' => $totalKonsultasi,
+            'totalKunjungan' => $totalKunjungan,
+            'user' => $user
+        ]);
     }
 
     public function guru()

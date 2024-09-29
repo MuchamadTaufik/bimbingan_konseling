@@ -67,6 +67,20 @@ class KunjunganController extends Controller
         return $pdf->download('laporan_kunjungan_siswa_'.$kunjungan->id.'.pdf');
     }
 
+    public function downloadLaporanKunjungan()
+    {
+        // Mengambil semua kunjungan
+        $kunjungan = Kunjungan::with('siswa')->get(); // Eager loading siswa
+
+        // Menyiapkan PDF
+        $pdf = app(PDF::class);
+        $pdf->loadView('kunjungan.laporan', compact('kunjungan'));
+
+        // Mengunduh file PDF
+        return $pdf->download('rekapitulasi_kunjungan.pdf');
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */

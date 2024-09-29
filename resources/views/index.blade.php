@@ -7,184 +7,91 @@
             <span class="p-0 m-0" style="font-size: 1rem; color:black;">Bimbingan dan Konseling Online</span>
         </div>
 
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-dark">Laporan Bimbingan (2024)</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Pilih Tahun :</div>
+        <div class="row">
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Total Bimbingan Siswa</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalBimbingan }} Bimbingan Siswa</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <a href="#" class="btn btn-dark float-right mb-4"><span data-feather="download"></span> Unduh Laporan</a>
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr class="bg-gradient-dark sidebar sidebar-dark accordion text-white" id="accordionSidebar">
-                                <th>No</th>
-                                <th>Tanggal</th>
-                                <th>Nomor Induk</th>
-                                <th>Nama</th>
-                                <th>Kelas</th>
-                                <th>Topik</th>
-                                <th>Tujuan</th>
-                                <th>Pemateri</th>
-                                <th>Proses</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>23 Mei 2024</td>
-                                <td>203040142</td>
-                                <td>Muchamad Taufik Mulyadi</td>
-                                <td>12 MIPA 1</td>
-                                <td>Beasiswa</td>
-                                <td>Pemberian Beasiswa</td>
-                                <td>Fikri</td>
-                                <td>
-                                    <a href="" class="badge bg-success border-0"><i class="bi bi-eye-fill"></i></a>
-                                    <a href="" class="badge bg-warning border-0"><i class="bi bi-pencil-square"></i></a>
-                                    <form action="" method="post" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3-fill"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Total Konsultasi Siswa</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalKonsultasi }} Konsultasi Siswa</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    Total Kunjungan Siswa</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalKunjungan }} Kunjungan Siswa</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-dark">Laporan Konsultasi (2024)</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Pilih Tahun :</div>
+        <div class="row">
+            <!-- Pie Chart -->
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Total Pengguna</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body pt-4 pb-2">
+                        {!! $wargaSekolahChart->container() !!}
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <a href="#" class="btn btn-dark float-right mb-4"><span data-feather="download"></span> Unduh Laporan</a>
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
-                        <thead>
-                            <tr class="bg-gradient-dark sidebar sidebar-dark accordion text-white" id="accordionSidebar">
-                                <th>No</th>
-                                <th>Tanggal</th>
-                                <th>Nomor Induk</th>
-                                <th>Nama</th>
-                                <th>Kelas</th>
-                                <th>Tempat</th>
-                                <th>Topik</th>
-                                <th>Hasil</th>
-                                <th>Proses</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>1 Juli 2024</td>
-                                <td>203040142</td>
-                                <td>Muchamad Taufik Mulyadi</td>
-                                <td>12 MIPA 1</td>
-                                <td>Ruang BK</td>
-                                <td>Ekstrakulikuler</td>
-                                <td>Ekstrakulikuler Baru di ACC</td>
-                                <td>
-                                    <a href="" class="badge bg-success border-0"><i class="bi bi-eye-fill"></i></a>
-                                    <a href="" class="badge bg-warning border-0"><i class="bi bi-pencil-square"></i></a>
-                                    <form action="" method="post" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3-fill"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        
+            <!-- Pie Chart -->
+            <div class="col-xl-6 col-lg-6 col-md-6">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Kegiatan Siswa</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body pt-4 pb-2">
+                        {!! $kegiatanChart->container() !!}
+                    </div>
                 </div>
             </div>
+            
         </div>
 
-        <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-dark">Laporan Konsultasi (2024)</h6>
-                <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Pilih Tahun :</div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <a href="#" class="btn btn-dark float-right mb-4"><span data-feather="download"></span> Unduh Laporan</a>
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
-                        <thead>
-                            <tr class="bg-gradient-dark sidebar sidebar-dark accordion text-white" id="accordionSidebar">
-                                <th>No</th>
-                                <th>Tanggal</th>
-                                <th>Nomor Induk</th>
-                                <th>Nama</th>
-                                <th>Kelas</th>
-                                <th>Bidang</th>
-                                <th>Topik</th>
-                                <th>Tujuan</th>
-                                <th>Pihak yang Terlibat</th>
-                                <th>Alamat</th>
-                                <th>Proses</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>1 Juli 2024</td>
-                                <td>203040142</td>
-                                <td>Muchamad Taufik Mulyadi</td>
-                                <td>12 MIPA 1</td>
-                                <td>Contoh Bidang</td>
-                                <td>Bantuan</td>
-                                <td>Memberikan bantuan kepada siswa</td>
-                                <td>Siswa dan Sekolah</td>
-                                <th>Jl. Cibubur Berem</th>
-                                <td>
-                                    <a href="" class="badge bg-success border-0"><i class="bi bi-eye-fill"></i></a>
-                                    <a href="" class="badge bg-warning border-0"><i class="bi bi-pencil-square"></i></a>
-                                    <form action="" method="post" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3-fill"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+        <script src="{{ $kegiatanChart->cdn() }}"></script>
+        <script src="{{ $wargaSekolahChart->cdn() }}"></script>
+
+        {{ $kegiatanChart->script() }}
+        {{ $wargaSekolahChart->script() }}
     @endsection

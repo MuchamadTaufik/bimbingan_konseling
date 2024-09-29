@@ -66,6 +66,8 @@ Route::group(['middleware'=> ['auth', 'role:guru']], function(){
     Route::put('/kunjungan/edit/{kunjungan}', [KunjunganController::class, 'update'])->name('kunjungan.update');
     Route::delete('/kunjungan/delete/{kunjungan}', [KunjunganController::class, 'destroy'])->name('kunjungan.delete');
 
+    Route::get('/kunjungan/rekapitulasi', [KunjunganController::class, 'downloadLaporanKunjungan'])->name('laporan.rekapitulasi.kunjungan');
+
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
 });
 
