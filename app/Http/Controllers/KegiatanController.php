@@ -7,6 +7,7 @@ use App\Models\Kegiatan;
 use Barryvdh\DomPDF\PDF;
 use App\Models\JenisKegiatan;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreKegiatanRequest;
 use App\Http\Requests\UpdateKegiatanRequest;
@@ -113,12 +114,34 @@ class KegiatanController extends Controller
             'siswa' => $siswa
         ]);
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(Kegiatan $kegiatan)
+    
+    public function downloadLaporanBimbingan($siswa_id, $jenis_kegiatans_id)
     {
-        //
+        // Mengambil kegiatan dengan eager loading siswa
+        $kegiatan = Kegiatan::with('siswa')
+            ->where('siswa_id', $siswa_id)
+            ->where('jenis_kegiatans_id', $jenis_kegiatans_id)
+            ->get();
+
+        $pdf = app(PDF::class);
+        $pdf->loadView('bimbingan_siswa.rekap.surat', compact('kegiatan'));
+
+        return $pdf->download('rekapan_bimbingan_siswa.pdf');
+    }
+
+    public function downloadLaporanBimbinganRekapitulasi($jenis_kegiatans_id)
+    {
+        // Mengambil kegiatan dengan eager loading siswa
+        $kegiatan = Kegiatan::with('siswa') // Pastikan untuk menghubungkan dengan model Siswa
+            ->where('jenis_kegiatans_id', $jenis_kegiatans_id)
+            ->get();
+
+        // Menyiapkan PDF
+        $pdf = app(PDF::class);
+        $pdf->loadView('bimbingan_siswa.laporan', compact('kegiatan'));
+
+        // Mengunduh file PDF
+        return $pdf->download('rekapitulasi_bimbingan.pdf');
     }
 
     /**

@@ -38,6 +38,10 @@ Route::group(['middleware'=> ['auth', 'role:guru']], function(){
     Route::get('/bimbingan/rekap-bimbingan/{siswa}', [KegiatanController::class, 'rekapBimbingan'])->name('bimbingan.rekap');
     Route::get('/bimbingan/edit/{kegiatan}', [KegiatanController::class, 'editBimbingan'])->name('bimbingan.edit');
 
+    Route::get('/bimbingan/laporan/{siswa_id}/{jenis_kegiatans_id}', [KegiatanController::class, 'downloadLaporanBimbingan'])->name('bimbingan.laporan');
+    Route::get('/bimbingan/rekapitulasi/{jenis_kegiatans_id}', [KegiatanController::class, 'downloadLaporanBimbinganRekapitulasi'])->name('laporan.rekapitulasi');
+
+
     //Konsultasi Siswa
     Route::get('/konsultasi', [KegiatanController::class, 'indexKonsultasi'])->name('konsultasi');
     Route::get('/konsultasi/{siswa}', [KegiatanController::class, 'createKonsultasi'])->name('konsultasi.create');
