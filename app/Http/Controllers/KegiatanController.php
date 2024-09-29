@@ -129,6 +129,20 @@ class KegiatanController extends Controller
         return $pdf->download('rekapan_bimbingan_siswa.pdf');
     }
 
+    public function downloadLaporanKonsultasi($siswa_id, $jenis_kegiatans_id)
+    {
+        // Mengambil kegiatan dengan eager loading siswa
+        $kegiatan = Kegiatan::with('siswa')
+            ->where('siswa_id', $siswa_id)
+            ->where('jenis_kegiatans_id', $jenis_kegiatans_id)
+            ->get();
+
+        $pdf = app(PDF::class);
+        $pdf->loadView('konsultasi_siswa.rekap.surat', compact('kegiatan'));
+
+        return $pdf->download('rekapan_konsultasi_siswa.pdf');
+    }
+
     public function downloadLaporanBimbinganRekapitulasi($jenis_kegiatans_id)
     {
         // Mengambil kegiatan dengan eager loading siswa
@@ -142,6 +156,21 @@ class KegiatanController extends Controller
 
         // Mengunduh file PDF
         return $pdf->download('rekapitulasi_bimbingan.pdf');
+    }
+
+    public function downloadLaporanKonsultasiRekapitulasi($jenis_kegiatans_id)
+    {
+        // Mengambil kegiatan dengan eager loading siswa
+        $kegiatan = Kegiatan::with('siswa') // Pastikan untuk menghubungkan dengan model Siswa
+            ->where('jenis_kegiatans_id', $jenis_kegiatans_id)
+            ->get();
+
+        // Menyiapkan PDF
+        $pdf = app(PDF::class);
+        $pdf->loadView('konsultasi_siswa.laporan', compact('kegiatan'));
+
+        // Mengunduh file PDF
+        return $pdf->download('rekapitulasi_konsultasi.pdf');
     }
 
     /**

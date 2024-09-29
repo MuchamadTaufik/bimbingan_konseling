@@ -49,6 +49,9 @@ Route::group(['middleware'=> ['auth', 'role:guru']], function(){
     Route::get('/konsultasi/download/{kegiatan}', [KegiatanController::class, 'downloadKonsultasi'])->name('konsultasi.download');
     Route::get('/konsultasi/edit/{kegiatan}', [KegiatanController::class, 'editKonsultasi'])->name('konsultasi.edit');
 
+    Route::get('/konsultasi/laporan/{siswa_id}/{jenis_kegiatans_id}', [KegiatanController::class, 'downloadLaporanKonsultasi'])->name('konsultasi.laporan');
+    Route::get('/konsultasi/rekapitulasi/{jenis_kegiatans_id}', [KegiatanController::class, 'downloadLaporanKonsultasiRekapitulasi'])->name('laporan.rekapitulasi.konsultasi');
+
     //tambah,edit,hapus Kegiatan
     Route::post('/kegiatan/siswa', [KegiatanController::class, 'store'])->name('kegiatan.store');
     Route::put('/kegiatan/siswa/{kegiatan}', [KegiatanController::class, 'update'])->name('kegiatan.update');

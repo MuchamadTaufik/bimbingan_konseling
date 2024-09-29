@@ -17,6 +17,7 @@
             </div>
         </div>
         <div class="card-body">
+            <a href="{{ route('laporan.rekapitulasi.konsultasi', ['jenis_kegiatans_id' => 2]) }}" class="btn btn-primary float-right mb-4">Download Laporan</a>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                     <thead>
